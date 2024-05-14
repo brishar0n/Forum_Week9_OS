@@ -1,6 +1,5 @@
 import sys
 
-# Function to read requests from a file
 def read_requests(file_name):
     with open(file_name, 'r') as file:
         requests = [int(line.strip()) for line in file.readlines()]
@@ -21,11 +20,9 @@ def scan(initial_position, requests):
     head_position = initial_position
     total_movement = 0
 
-    # Separate requests into two lists: left and right of the initial position
     left = [r for r in requests if r < initial_position]
     right = [r for r in requests if r >= initial_position]
 
-    # Move right first, then to the end, and then left
     for request in right:
         total_movement += abs(head_position - request)
         head_position = request
@@ -44,11 +41,9 @@ def c_scan(initial_position, requests):
     head_position = initial_position
     total_movement = 0
 
-    # Separate requests into two lists: left and right of the initial position
     left = [r for r in requests if r < initial_position]
     right = [r for r in requests if r >= initial_position]
 
-    # Move right, then to the end, jump to start, and move right again
     for request in right:
         total_movement += abs(head_position - request)
         head_position = request
